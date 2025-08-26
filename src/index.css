@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CycleGuard - Smart Cycle Management Design System */
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Updated Blue Theme */
+    --primary: 197 100% 45%; /* #00a8e8 */
+    --primary-light: 197 100% 55%;
+    --primary-dark: 197 100% 35%;
+    --primary-foreground: 0 0% 98%;
+    
+    /* Background System */
+    --background: 0 0% 100%;
+    --background-secondary: 195 15% 98%;
+    --foreground: 195 100% 12%;
+
+    /* UI Components */
+    --card: 0 0% 100%;
+    --card-foreground: 195 100% 12%;
+    --card-secondary: 195 50% 96%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 195 100% 12%;
+
+    /* Interactive Elements */
+    --secondary: 197 30% 92%;
+    --secondary-foreground: 197 100% 35%;
+    
+    --muted: 197 15% 95%;
+    --muted-foreground: 197 20% 45%;
+
+    --accent: 197 60% 88%;
+    --accent-foreground: 197 100% 35%;
+
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 195 100% 12%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders & Inputs */
+    --border: 197 25% 90%;
+    --input: 197 25% 90%;
+    --ring: 197 100% 45%;
+
+    /* Design Tokens - Mobile Optimized */
+    --radius: 1rem;
+    --radius-lg: 1.25rem;
+    --radius-xl: 1.5rem;
+    
+    /* Mobile-friendly spacing */
+    --spacing-touch: 44px; /* iOS/Android recommended touch target */
+    --spacing-safe: env(safe-area-inset-bottom, 20px);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background-secondary)) 100%);
+    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(var(--primary-dark) / 0.8) 100%);
+    
+    /* Mobile Shadows */
+    --shadow-sm: 0 1px 3px hsl(var(--primary) / 0.08);
+    --shadow-md: 0 4px 12px hsl(var(--primary) / 0.1);
+    --shadow-lg: 0 8px 20px hsl(var(--primary) / 0.12);
+    --shadow-xl: 0 12px 28px hsl(var(--primary) / 0.15);
+    
+    /* Mobile Animations */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark Mode - CycleGuard Theme */
+    --background: 195 100% 6%;
+    --background-secondary: 195 100% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 195 100% 8%;
+    --card-foreground: 0 0% 95%;
+    --card-secondary: 195 100% 10%;
+
+    --popover: 195 100% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 197 100% 75%;
+    --primary-light: 197 100% 80%;
+    --primary-dark: 197 100% 25%;
+    --primary-foreground: 197 100% 15%;
+
+    --secondary: 197 100% 12%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 197 100% 10%;
+    --muted-foreground: 197 15% 65%;
+
+    --accent: 197 100% 15%;
+    --accent-foreground: 0 0% 95%;
+
+    --border: 197 100% 15%;
+    --input: 197 100% 15%;
+    --ring: 197 100% 75%;
+    
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-dark)) 0%, hsl(var(--primary)) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background-secondary)) 100%);
+    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(var(--background) / 0.9) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    /* Mobile optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    overscroll-behavior: none;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    /* Prevent pull-to-refresh */
+    overscroll-behavior-y: none;
+  }
+
+  /* Mobile-specific styles */
+  @media (max-width: 768px) {
+    body {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+  }
+}
+
+@layer components {
+  /* Mobile-optimized Component Styles */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-overlay {
+    background: var(--gradient-overlay);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .glass-effect {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+
+  /* Mobile touch targets */
+  .touch-target {
+    min-height: var(--spacing-touch);
+    min-width: var(--spacing-touch);
+  }
+
+  /* Safe area handling */
+  .safe-bottom {
+    padding-bottom: var(--spacing-safe);
+  }
+
+  /* Mobile card styles */
+  .mobile-card {
+    @apply rounded-2xl shadow-md border-0 bg-card transition-smooth;
+  }
+
+  /* Active touch feedback */
+  .touch-feedback {
+    @apply active:scale-95 transition-transform duration-75;
+  }
+}
