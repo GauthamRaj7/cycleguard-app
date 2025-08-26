@@ -5,9 +5,12 @@ const Index = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Redirect to onboarding for first-time users
-    // In a real app, you'd check if user is authenticated
-    navigate("/onboarding");
+    // Show loading screen briefly before redirect
+    const timer = setTimeout(() => {
+      navigate("/onboarding");
+    }, 500);
+    
+    return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
