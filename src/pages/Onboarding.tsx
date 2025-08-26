@@ -67,7 +67,7 @@ const Onboarding = () => {
 
       {/* Content */}
       <div className="flex-1 px-6">
-        <Card className="p-8 shadow-elegant border-0 bg-card">
+        <Card className="p-8 shadow-elegant border-0 bg-card my-[52px]">
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-primary rounded-2xl mx-auto mb-4 flex items-center justify-center">
               <currentStepData.icon className="w-8 h-8 text-primary-foreground" />
