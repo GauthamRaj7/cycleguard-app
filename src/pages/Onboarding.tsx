@@ -8,42 +8,34 @@ import autoLockIllustration from "@/assets/auto-lock-illustration.jpg";
 import gpsTrackingIllustration from "@/assets/gps-tracking-illustration.jpg";
 import analyticsIllustration from "@/assets/analytics-illustration.jpg";
 import batteryIllustration from "@/assets/battery-illustration.jpg";
-
-const onboardingSteps = [
-  {
-    title: "Smart Auto-Lock",
-    description: "Your cycle automatically locks when you're 10 meters away for 10 seconds. Never worry about forgetting to secure your bike again.",
-    icon: Shield,
-    feature: "Automatic Security",
-    illustration: autoLockIllustration
-  },
-  {
-    title: "GPS Tracking",
-    description: "Track your cycle's location in real-time. Get instant alerts if someone moves your bike without permission.",
-    icon: MapPin,
-    feature: "Real-time Location",
-    illustration: gpsTrackingIllustration
-  },
-  {
-    title: "Smart Analytics",
-    description: "Monitor tire pressure, track your trips, measure distances, and get insights about your cycling habits.",
-    icon: Activity,
-    feature: "Performance Insights",
-    illustration: analyticsIllustration
-  },
-  {
-    title: "Long Battery Life",
-    description: "Our device lasts weeks on a single charge. Get notifications when it's time to recharge your CycleGuard.",
-    icon: Battery,
-    feature: "Extended Battery",
-    illustration: batteryIllustration
-  }
-];
-
+const onboardingSteps = [{
+  title: "Smart Auto-Lock",
+  description: "Your cycle automatically locks when you're 10 meters away for 10 seconds. Never worry about forgetting to secure your bike again.",
+  icon: Shield,
+  feature: "Automatic Security",
+  illustration: autoLockIllustration
+}, {
+  title: "GPS Tracking",
+  description: "Track your cycle's location in real-time. Get instant alerts if someone moves your bike without permission.",
+  icon: MapPin,
+  feature: "Real-time Location",
+  illustration: gpsTrackingIllustration
+}, {
+  title: "Smart Analytics",
+  description: "Monitor tire pressure, track your trips, measure distances, and get insights about your cycling habits.",
+  icon: Activity,
+  feature: "Performance Insights",
+  illustration: analyticsIllustration
+}, {
+  title: "Long Battery Life",
+  description: "Our device lasts weeks on a single charge. Get notifications when it's time to recharge your CycleGuard.",
+  icon: Battery,
+  feature: "Extended Battery",
+  illustration: batteryIllustration
+}];
 const Onboarding = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const navigate = useNavigate();
-
   const nextStep = () => {
     if (currentStep < onboardingSteps.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -51,15 +43,11 @@ const Onboarding = () => {
       navigate("/auth");
     }
   };
-
   const skipToAuth = () => {
     navigate("/auth");
   };
-
   const currentStepData = onboardingSteps[currentStep];
-
-  return (
-    <div className="min-h-screen bg-gradient-secondary flex flex-col">
+  return <div className="min-h-screen bg-gradient-secondary flex flex-col">
       {/* Header */}
       <div className="p-6 flex justify-between items-center">
         <div className="flex items-center">
@@ -74,13 +62,7 @@ const Onboarding = () => {
 
       {/* Feature Illustration */}
       <div className="px-6 mb-8">
-        <div className="relative h-64 rounded-xl overflow-hidden shadow-elegant bg-gradient-secondary">
-          <img 
-            src={currentStepData.illustration} 
-            alt={`${currentStepData.title} illustration`}
-            className="w-full h-full object-contain p-8"
-          />
-        </div>
+        
       </div>
 
       {/* Content */}
@@ -103,25 +85,11 @@ const Onboarding = () => {
 
           {/* Progress Indicators */}
           <div className="flex justify-center space-x-2 mb-8">
-            {onboardingSteps.map((_, index) => (
-              <div
-                key={index}
-                className={`h-2 rounded-full transition-smooth ${
-                  index === currentStep 
-                    ? "w-8 bg-primary" 
-                    : "w-2 bg-muted"
-                }`}
-              />
-            ))}
+            {onboardingSteps.map((_, index) => <div key={index} className={`h-2 rounded-full transition-smooth ${index === currentStep ? "w-8 bg-primary" : "w-2 bg-muted"}`} />)}
           </div>
 
           {/* Action Button */}
-          <Button 
-            onClick={nextStep}
-            variant="hero"
-            size="xl"
-            className="w-full"
-          >
+          <Button onClick={nextStep} variant="hero" size="xl" className="w-full mx-0 my-0 px-0">
             {currentStep === onboardingSteps.length - 1 ? "Get Started" : "Continue"}
             <ChevronRight className="w-5 h-5" />
           </Button>
@@ -134,8 +102,6 @@ const Onboarding = () => {
           Securing cycles across IIT Guwahati campus
         </p>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Onboarding;
