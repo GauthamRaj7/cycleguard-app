@@ -4,31 +4,39 @@ import { Card } from "@/components/ui/card";
 import { ChevronRight, Shield, MapPin, Activity, Battery } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroCycle from "@/assets/hero-cycle.jpg";
+import autoLockIllustration from "@/assets/auto-lock-illustration.jpg";
+import gpsTrackingIllustration from "@/assets/gps-tracking-illustration.jpg";
+import analyticsIllustration from "@/assets/analytics-illustration.jpg";
+import batteryIllustration from "@/assets/battery-illustration.jpg";
 
 const onboardingSteps = [
   {
     title: "Smart Auto-Lock",
     description: "Your cycle automatically locks when you're 10 meters away for 10 seconds. Never worry about forgetting to secure your bike again.",
     icon: Shield,
-    feature: "Automatic Security"
+    feature: "Automatic Security",
+    illustration: autoLockIllustration
   },
   {
     title: "GPS Tracking",
     description: "Track your cycle's location in real-time. Get instant alerts if someone moves your bike without permission.",
     icon: MapPin,
-    feature: "Real-time Location"
+    feature: "Real-time Location",
+    illustration: gpsTrackingIllustration
   },
   {
     title: "Smart Analytics",
     description: "Monitor tire pressure, track your trips, measure distances, and get insights about your cycling habits.",
     icon: Activity,
-    feature: "Performance Insights"
+    feature: "Performance Insights",
+    illustration: analyticsIllustration
   },
   {
     title: "Long Battery Life",
     description: "Our device lasts weeks on a single charge. Get notifications when it's time to recharge your CycleGuard.",
     icon: Battery,
-    feature: "Extended Battery"
+    feature: "Extended Battery",
+    illustration: batteryIllustration
   }
 ];
 
@@ -54,30 +62,24 @@ const Onboarding = () => {
     <div className="min-h-screen bg-gradient-secondary flex flex-col">
       {/* Header */}
       <div className="p-6 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-            <Shield className="w-5 h-5 text-primary-foreground" />
-          </div>
-          <span className="text-xl font-bold text-foreground">CycleGuard</span>
+        <div className="flex items-center">
+          <h1 className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            Cycle<span className="text-primary">Guard</span>
+          </h1>
         </div>
         <Button variant="ghost" onClick={skipToAuth} className="text-muted-foreground">
           Skip
         </Button>
       </div>
 
-      {/* Hero Image */}
+      {/* Feature Illustration */}
       <div className="px-6 mb-8">
-        <div className="relative h-64 rounded-xl overflow-hidden shadow-elegant">
+        <div className="relative h-64 rounded-xl overflow-hidden shadow-elegant bg-gradient-secondary">
           <img 
-            src={heroCycle} 
-            alt="Smart cycle with GPS tracking"
-            className="w-full h-full object-cover"
+            src={currentStepData.illustration} 
+            alt={`${currentStepData.title} illustration`}
+            className="w-full h-full object-contain p-8"
           />
-          <div className="absolute inset-0 bg-gradient-overlay" />
-          <div className="absolute bottom-4 left-4">
-            <div className="text-white font-semibold text-lg">IIT Guwahati</div>
-            <div className="text-white/80 text-sm">Smart Cycle Management</div>
-          </div>
         </div>
       </div>
 
